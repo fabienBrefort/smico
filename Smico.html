@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        html {
+            height: 98%;
+            width: 100%;
+            font-family: "Open Sans", sans-serif;
+            font-size: 14px;
+            margin: 0px;
+        }
+        body {
+            height: 100%;
+        }
+        .chat-container {
+            background-color: #ffffff;
+            border: 1px solid #e5e5ea;
+            display: block;
+            height: 70%;
+            width: 85%;
+            border-radius: 6px;
+            box-shadow: 0 0 20px #acacac;
+			      position: fixed;
+			      right: 5px;
+			      bottom: 3px;
+        }
+        
+        
+       
+                
+        
+    </style>
+    <link rel="shortcut icon" href="Icone-1-60x60.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://webchat-designer.converse.engageone.co/css/converse-chat.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+    <script src="https://webchat-designer.converse.engageone.co/js/converse-chat.js"></script>
+    <script src="https://cdn.jsdelivr.net/bluebird/latest/bluebird.min.js"></script>
+</head>
+<script type="text/javascript">
+
+    navigator.geolocation.getCurrentPosition(setWebClient);
+    function setWebClient(pos) {
+        var options = {
+            allowHTML: true,
+            placeholder: "Saisissez votre texte...",
+            host:  "https://webchat-designer.converse.engageone.co",
+            converseHost: "https://designer.converse.engageone.co",
+            serverUserImage: "https://emea-presales.s3.eu-west-2.amazonaws.com/fabien-brefort/Demo-Clients/Smico/Icone-1-60x60.png",
+            container: "#chatcontainer",
+            showToolbar: true,
+            reConnectDelay: 10000,
+            tenant: "sacb1c5",
+            botId: "631954e1-e8ab-43d5-be50-cf84c6182238",
+            title : "Assistant Virtuel SMICO",
+            startPhrase: "Bonjour",
+            hideIcon: "fa-times", // See: https://fontawesome.com/icons?d=gallery&m=free
+            sendButtonTitle: "Envoyer",
+            user: {
+                id: "TT00001",
+                first_name: pos.coords.latitude,
+                last_name: pos.coords.longitude,
+                full_name: "Customer Any",
+                lang: navigator.language.substr(0, 2),
+                position: {
+                  latitude: pos.coords.latitude,
+                  longitude: pos.coords.longitude 
+                }
+            }
+        };
+
+        var webClient = ConverseWebClient.init(options);
+        webClient.show();
+       // $("body").on("click", "button.custom-btn", function() {
+       // webClient.sendPostBack($(this).data("postback"));
+    };
+</script>
+
+<body>
+
+
+
+    <iframe width="100%" height="100%" src="http://www.smico.net/" frameborder="0" allowfullscreen></iframe>
+    <div id="chatcontainer" class="chat-container pb-chat-popup-minimize"></div>
+    
+
+</div>
+
+</body>
+
+</html>
